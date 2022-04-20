@@ -15,47 +15,39 @@
 
                
                <div class="bs-component">
-
+               <div class="row">
+                @foreach($professeurs as $professeur)
+                    <div class="col-sm-6 col-md-4">
+                        <div class="bg-dark alert text-light">
+                        <div class="thumbnail">
+                        <img src="/storage/{{$professeur->image}}" width="150" height="150" class="img-thumbnail" >
+                        <div class="caption">
+                            <h3>{{$professeur->nom}}  {{$professeur->prenom}}</h3>
+                            <br>
+                            <h5>Specialité :</h5>
+                            <h3>{{$professeur->specialite}}</h3>
+                            <br>
+                            <h4>Dossiers scientifique :</h3>
+                            
+                            <h6><a href="/storage/{{$professeur->Dossier_scientifique}}" class="text-success"  download> Download   </a><b class="text-info">{{$professeur->etat_ds}}</b></h5>
+                            <br>
+                            <h4>Dossiers scientifique :</h3>
+                            
+                            <h6><a href="/storage/{{$professeur->Dossier_Pedagogique}}" class="text-success"  download> Download   </a><b class="text-info">{{$professeur->etat_dp}}</b></h5>
+                            <br>
+                            <h4>Dossiers scientifique :</h3>
+                            
+                            <h6><a href="/storage/{{$professeur->Dossier_administratif}}" class="text-success"  download> Download   </a><b class="text-info">{{$professeur->etat_da}}</b></h5>
+                            <p><form action="" method="post"><a href="{{route('professeurs.show',$professeur->id)}}" class="btn btn-info">Consulter profile</a></form> <form action="" method="post"><a href="{{route('professeurs.edit',$professeur->id)}}" class="btn btn-primary">Éditer</a></form></p>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
                 
            
-           <table class="table table-dark">
-                <thead>
-                    <tr>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prenom</th>
-                    <th scope="col">Dossier_scientifique</th>
-                    <th scope="col">Dossier_Pedagogique</th>
-                    <th scope="col">Dossier_administratif</th>
-                    
-                    <th scope="col">Voir profile</th>
-                    <th scope="col">Éditer</th>
-                    <!--
-                    <th scope="col">Delete</th>
-                    -->
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($professeurs as $professeur)
-                    <tr>
-                    <td>{{$professeur->nom}}<hr><b class="text-info">L'etat de dossier --</b></td>
-                    <td>{{$professeur->prenom}}<br/></td>
-                    <td><a href="/storage/{{$professeur->Dossier_scientifique}}" class="text-success"  download>Download Dossier_scientifique</a><hr><b class="text-info">{{$professeur->etat_ds}}</b></td>
-                    <td><a href="/storage/{{$professeur->Dossier_Pedagogique}}" class="text-success" download>Download Dossier_Pedagogique</a><hr><b class="text-info">{{$professeur->etat_dp}}</b></td>
-                    <td><a href="/storage/{{$professeur->Dossier_administratif}}" class="text-success" download>Download Dossier_administratif</a><hr><b class="text-info">{{$professeur->etat_da}}</b></td>
-                    
-                    <td><form action="" method="post"><a href="{{route('professeurs.show',$professeur->id)}}" class="btn btn-info">Profil</a></form></td>
-                    <td><form action="" method="post"><a href="{{route('professeurs.edit',$professeur->id)}}" class="btn btn-primary">Éditer</a></form></td>
-                    
-                    <!--
-                    <td><form action="{{route('professeurs.destroy',$professeur->id)}}" method="post">{{csrf_field()}}{{method_field('DELETE')}}<button type="submit" class="btn btn-danger">Delete</button></form></td>
-                    -->
-                    </tr>
-                    
-                    
-                @endforeach
-                </tbody>
-                </table>
+           
             </div>
             </div>
         </div>
